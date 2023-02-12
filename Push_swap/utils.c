@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:24:59 by afontain          #+#    #+#             */
-/*   Updated: 2023/02/10 13:40:44 by afontain         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:05:41 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,15 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *str1, char *str2)
 {
 	size_t	i;
 	size_t	k;
 	char	*str;
-	char	*str1;
-	char	*str2;
 
-	str1 = (char *)s1;
-	str2 = (char *)s2;
 	i = 0;
 	k = 0;
-	if (!s1 || !s2)
+	if (!str1 || !str2)
 		return (NULL);
 	str = malloc(sizeof(char) * (ft_strlen(str1) + ft_strlen(str2) + 1));
 	if (!str)
@@ -44,9 +40,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (str1[i])
 		str[k++] = str1[i++];
 	i = 0;
-	while (s2[i])
+	while (str2[i])
 		str[k++] = str2[i++];
 	str[k] = '\0';
+	free(str1);
 	return (str);
 }
 
@@ -77,5 +74,3 @@ long long	ft_atoi(char *str)
 	}
 	return (nb * signe);
 }
-
-

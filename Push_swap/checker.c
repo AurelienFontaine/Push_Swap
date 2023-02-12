@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 19:43:43 by afontain          #+#    #+#             */
-/*   Updated: 2023/02/10 14:16:15 by afontain         ###   ########.fr       */
+/*   Updated: 2023/02/12 18:26:28 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 int	check_is_numbers(int ac, char **av)
 {
-	size_t	i;
-	size_t	j;
-	
-	i = 0;
+	int	i;
+	int	j;
+
+	i = 1;
 	while (i < ac)
 	{
 		j = 0;
+		if (av[i][j] == '-' && av[i][j + 1])
+			j++;
 		while (av[i][j])
 		{
-			if (av[i][j] > 58 || av[i][j] < 48)
+			if (av[i][j] > '9' || av[i][j] < '0')
 				return (0);
-			j++;	
+			j++;
 		}
 		i++;
 	}
@@ -34,28 +36,28 @@ int	check_is_numbers(int ac, char **av)
 
 int	check_is_int(int ac, char **av)
 {
-	
-	size_t	i;
+	int	i;
 
-	i = 0;
+	i = 1;
 	while (i < ac)
 	{
 		if (av[i][0] == '\0')
 			return (0);
 		if (ft_atoi(av[i]) > 2147483647 || ft_atoi(av[i]) < -2147483648)
 			return (0);
+		i++;
 	}
 	return (1);
 }
 
-int	check_doublons(int ac, char **av)
+int	check_doublons(char **av)
 {
-	size_t	i;
-	size_t	j;
-	
-	j = 0;
+	int	i;
+	int	j;
+
+	j = 1;
 	while (av[j])
-	{	
+	{
 		i = j + 1;
 		while (av[i])
 		{
@@ -68,20 +70,13 @@ int	check_doublons(int ac, char **av)
 	return (1);
 }
 
-int	check_already_sort(t_list **stack)
+int	check_already_sort(t_list *stack)
 {
-	size_t	i;
-	
-	i = 0;
-	if (!(*stack))
+	if (!stack)
 		return (0);
-	
-	while (*stack && (*stack)->content < (*stack)->next->content)
-	{
-		*stack = (*stack)->next;
-		i++;
-	}
-	if (!(*stack))
-		return (1);
-	return (0);
+	while (stack->next && stack->content < stack->next->content)
+		stack = stack->next;
+	if (!stack)
+		return (0);
+	return (1);
 }

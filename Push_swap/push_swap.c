@@ -6,47 +6,77 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:24:14 by afontain          #+#    #+#             */
-/*   Updated: 2023/02/10 14:31:34 by afontain         ###   ########.fr       */
+/*   Updated: 2023/02/12 21:53:14 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+t_list	**create_stacks(int ac, char **av)
+{
+	t_list	**stack_a;
+	int		i;
+
+	i = 1;
+	stack_a = malloc(sizeof (t_list *));
+	*stack_a = NULL;
+	while (i < ac)
+	{
+		ft_lstadd_back(stack_a, ft_atoi(av[i]));
+		i++;
+	}
+	return (stack_a);
+}
+
 int	parsing(int ac, char **av)
 {
-	t_list	**stack;
-	
-	if (!check_is_numbers(ac, av));
+	if (!check_is_numbers(ac, av))
+	{
+		printf("a");
 		return (0);
+	}
 	if (!check_is_int(ac, av))
+	{
+		printf("ab");
 		return (0);
-	if (!check_doublons(ac, av))
+	}
+	if (!check_doublons(av))
+	{
+		printf("abbb");
 		return (0);
-	if (!check_already_sort(*stack))
-		return (0);
+	}
 	return (1);
 }
 
-void	small_sort(t_list **stack_a, t_list **stack_b)
+void	print_stack(t_list *stack)
 {
-	if (ft_lstsize(*stack_a) == 2)
-		tri_2(stack_a);
-	else if (ft_lstsize(*stack_a) == 3)
-		tri_3(stack_a);
-	else if (ft_lstsize(*stack_a) == 4)
-		tri_4(stack_a, stack_b);
+	t_list	*tmp;
+
+	tmp = stack;
+	printf("stack\n");
+	while (tmp)
+	{
+		printf("%d\n", tmp->content);
+		tmp = tmp->next;
+	}
+	printf("\n");
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {	
 	t_list	**stack_a;
 	t_list	**stack_b;
-	
+
 	if (ac <= 2)
-		return (0);
+		return (1);
 	if (!parsing(ac, av))
 		return (write(1, "ERROR\n", 6), 1);
-	stack_a = malloc(sizeof(t_list *));
+	stack_a = create_stacks(ac, av);
+	if (!check_already_sort(*stack_a))
+		return (0);
 	stack_b = malloc(sizeof(t_list *));
-	big_sort(stack_a);
+	// small_sort(stack_a, stack_b);
+	big_sort(stack_a, stack_b);
+	// print_stack(*stack_a);
+	// free(stack_b);
 }

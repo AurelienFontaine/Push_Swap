@@ -6,7 +6,7 @@
 #    By: afontain <afontain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 12:51:01 by afontain          #+#    #+#              #
-#    Updated: 2023/02/03 18:28:42 by afontain         ###   ########.fr        #
+#    Updated: 2023/02/12 18:19:18 by afontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,17 +15,19 @@ CC = 	gcc
 RM =	rm -f
 CFLAGS = -Werror -Wextra -Wall -g3
 
-SRC = 
+SRC = utils.c swap.c small_sort.c rotate.c reverse_rotate.c \
+	push.c push_swap.c lst_utils.c checker.c algo_utils.c \
+	algo_sort.c \
 
-BONUS =	
-	
-
-BONUS_OBJS = $(BONUS:.c=.o)
+# BONUS = 
 
 OBJS = $(SRC:.c=.o)
 
 $(NAME): $(OBJS)
 	${CC} ${CFLAGS} $(OBJS) -o $(NAME)
+
+.c.o:
+	${CC} $(CFLAGS) -c $< -o $(<:.c=.o)
 
 all:	$(NAME)
 

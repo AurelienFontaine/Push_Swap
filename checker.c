@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 19:43:43 by afontain          #+#    #+#             */
-/*   Updated: 2023/03/13 12:59:14 by afontain         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:50:07 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,5 @@ int	check_already_sort(t_list *stack)
 		stack = stack->next;
 	if (!stack->next)
 		return (0);
-	// print_stack(stack);
 	return (1);
 }

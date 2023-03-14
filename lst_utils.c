@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 16:04:35 by afontain          #+#    #+#             */
-/*   Updated: 2023/02/13 22:39:49 by afontain         ###   ########.fr       */
+/*   Updated: 2023/03/14 16:29:12 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	size_t	i;
+	int		i;
 	t_list	*tmp;
 
-	i = 0;
 	tmp = lst;
+	i = 0;
 	if (!tmp)
 		return (0);
 	while (tmp)
@@ -72,5 +72,6 @@ void	ft_free_list(t_list **stack)
 		*stack = (*stack)->next;
 		free(tmp);
 	}
+	*stack= NULL;
 	free(stack);
 }

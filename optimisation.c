@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:56:10 by afontain          #+#    #+#             */
-/*   Updated: 2023/03/13 20:06:39 by afontain         ###   ########.fr       */
+/*   Updated: 2023/03/14 19:44:03 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,12 @@ void	only3_in_a(t_list **stack_a, t_list **stack_b)
 
 void	only_low_in_a(t_list **stack_a, t_list **stack_b)
 {
-	int size;
 	int *str;
 	int	i;
-	t_list	*tmp;
+	const t_list	*tmp = *stack_a;
+	const int	size = ft_lstsize((t_list *)tmp);
 	
 	i = 0;
-	tmp = *stack_a;
-	size = ft_lstsize(tmp);
 	str = malloc(sizeof(int) * size);
 	if (!str)
 		return ;

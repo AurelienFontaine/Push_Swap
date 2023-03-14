@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:24:14 by afontain          #+#    #+#             */
-/*   Updated: 2023/02/14 18:42:20 by afontain         ###   ########.fr       */
+/*   Updated: 2023/03/14 19:24:04 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	arrange_a(t_list **stack_a)
 
 	i = 1;
 	tmp = *stack_a;
+	if (!check_already_sort(*stack_a))
+		return ;
 	while(tmp->content < tmp->next->content)
 	{
 		i++;
@@ -26,11 +28,8 @@ void	arrange_a(t_list **stack_a)
 	}
 	if (i < ft_lstsize(*stack_a) / 2 + 1)
 	{
-		while (i > 0)
-			{
+		while (i-- > 0)
 				rotate(stack_a, 'a');
-				i--;
-			}
 	}
 	else if (i >= ft_lstsize(*stack_a) / 2 + 1 )
 	{
@@ -65,6 +64,8 @@ t_list	**create_stacks(int ac, char **av)
 
 	i = 1;
 	stack_a = malloc(sizeof (t_list *));
+	if (!stack_a)
+		return (NULL);
 	*stack_a = NULL;
 	while (i < ac)
 	{
@@ -105,19 +106,24 @@ int	main(int ac, char **av)
 	t_list	**stack_a;
 	t_list	**stack_b;
 
-	if (ac <= 2)
-		return (1);
 	if (!parsing(ac, av))
 		return (write(1, "ERROR\n", 6), 1);
-	stack_a = create_stacks(ac, av);
+	if (ac <= 2)
+		return (0);
+	stack_a = create_stacks(ac , av);
+	if (!check_already_sort(*stack_a))
+		return (ft_free_list(stack_a), 1);
+	stack_b = malloc(sizeof(t_list *));
+	if (!stack_b)
+		return (0);
+	*stack_b = NULL;
+	if (ac == 3 || ac == 4)
+		small_sort(stack_a, stack_b);
+	else 
+		big_sort(stack_a, stack_b);
 	if (!check_already_sort(*stack_a))
 		return (0);
-	stack_b = malloc(sizeof(t_list *));
-	// small_sort(stack_a, stack_b);
-	big_sort(stack_a, stack_b);
-	// printf("\n\n%d\n\n", check_already_sort(*stack_a));
-	// print_stack(*stack_a);
-	// free(stack_b);
 	arrange_a(stack_a);
-	// print_stack(*stack_a);
+	ft_free_list(stack_b);
+	ft_free_list(stack_a);
 }

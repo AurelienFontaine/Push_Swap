@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:47:39 by afontain          #+#    #+#             */
-/*   Updated: 2023/02/12 18:08:18 by afontain         ###   ########.fr       */
+/*   Updated: 2023/03/17 13:30:42 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	swap(t_list **stack, char c)
 	(*stack)->index = tmp->index;
 	tmp->content = i;
 	tmp->index = j;
-	// *stack = tmp;
 	if (c == 'a')
 		write(1, "sa\n", 3);
 	else if (c == 'b')

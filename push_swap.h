@@ -6,12 +6,12 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:50:58 by afontain          #+#    #+#             */
-/*   Updated: 2023/03/14 14:22:05 by afontain         ###   ########.fr       */
+/*   Updated: 2023/03/17 18:45:12 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -25,15 +25,16 @@ typedef struct s_list
 	int				index;
 	int				pos_final;
 	struct s_list	*next;
-} t_list;
+}t_list;
 
 //Main
 int			parsing(int ac, char **av);
 void		print_stack(t_list *stack);
 void		small_sort(t_list **stack_a, t_list **stack_b);
-
-//
 void		big_sort(t_list **stack_a, t_list **stack_b);
+t_list		**create_stacks(int ac, char **av);
+void		indexing(t_list *stack_a);
+void		arrange_a(t_list **stack_a);
 
 //Algo_utils
 void		only3_in_a(t_list **stack_a, t_list **stack_b);
@@ -41,6 +42,9 @@ void		set_index(t_list **stack);
 int			find_index(t_list *stack_a, int index);
 int			cost_r_or_rr(t_list **stack, int index);
 int			calcul_nb_coup(t_list **stack_a, t_list **stack_b);
+
+//Find_index
+int			fi(t_list *stack_a, int content);
 
 //Checker
 int			check_is_numbers(int ac, char **av);
@@ -61,7 +65,7 @@ void		ss(t_list **stack_a, t_list **stack_b);
 
 //Rotate
 void		rotate(t_list **stack, char c);
-void 		rr(t_list **stack_a, t_list **stack_b);
+void		rr(t_list **stack_a, t_list **stack_b);
 
 //Reverse rotate
 void		rrba(t_list **stack, char c);
@@ -82,9 +86,8 @@ void		ft_lstadd_back(t_list **lst, int content);
 void		ft_free_list(t_list **stack);
 
 //Optimissation
-void	same_place(t_list **stack_a, t_list **stack_b, int nombre);
-void	only_low_in_a(t_list **stack_a, t_list **stack_b);
-void	ft_sort_int_tab(int *tab, int size);
-
+void		same_place(t_list **stack_a, t_list **stack_b, int nombre);
+void		only_low_in_a(t_list **stack_a, t_list **stack_b);
+void		ft_sort_int_tab(int *tab, int size);
 
 #endif

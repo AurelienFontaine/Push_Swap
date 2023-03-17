@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 15:06:23 by afontain          #+#    #+#             */
-/*   Updated: 2023/03/14 19:46:11 by afontain         ###   ########.fr       */
+/*   Updated: 2023/03/17 18:33:03 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,11 @@ void	op_in_b1(t_list **stack_b, int index)
 
 void	op_in_b(t_list **stack_b, int nombre)
 {
-	// int	i;
-	int	index;
-	t_list *tmp = *stack_b;
+	int		index;
+	t_list	*tmp;
 
-	// i = 1;
-	index = find_index(*stack_b, nombre);
+	tmp = *stack_b;
+	index = fi(*stack_b, nombre);
 	set_index(stack_b);
 	while (tmp)
 	{
@@ -49,20 +48,6 @@ void	op_in_b(t_list **stack_b, int nombre)
 		tmp = tmp->next;
 	}
 	op_in_b1(stack_b, index);
-// 	if (index <= ft_lstsize(*stack_b) / 2 + 1)
-// 	{
-// 		while (i++ < index)
-// 			rotate(stack_b, 'b');
-// 	}
-// 	else if (index > ft_lstsize(*stack_b) / 2 + 1)
-// 	{
-// 		if (index == ft_lstsize(*stack_b))
-// 			return (rrba(stack_b, 'b'));
-// 		else if (ft_lstsize(*stack_b) == 2)
-// 			return (rrba(stack_b, 'b'));
-// 		while (i++ < ft_lstsize(*stack_b) + 2 - index)
-// 			rrba(stack_b, 'b');
-// 	}
 }
 
 void	op_in_a(t_list **stack_a, int nombre)
@@ -104,13 +89,13 @@ int	get_final_pos(t_list *stack, int content)
 void	big_sort(t_list **stack_a, t_list **stack_b)
 {
 	int	nombre;
-	
+
 	if (ft_lstsize(*stack_a) > 5)
 	{
 		only_low_in_a(stack_a, stack_b);
 		only3_in_a(stack_a, stack_b);
 	}
-	else 
+	else
 		only3_in_a(stack_a, stack_b);
 	tri_3(stack_a);
 	while (ft_lstsize(*stack_b) > 0)
@@ -119,9 +104,7 @@ void	big_sort(t_list **stack_a, t_list **stack_b)
 		same_place(stack_a, stack_b, nombre);
 		nombre = calcul_nb_coup(stack_a, stack_b);
 		op_in_b(stack_b, nombre);
-
-		op_in_a(stack_a, find_index(*stack_a, nombre));
-
+		op_in_a(stack_a, fi(*stack_a, nombre));
 		set_index(stack_a);
 		push(stack_b, stack_a, 'a');
 	}

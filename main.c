@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:24:14 by afontain          #+#    #+#             */
-/*   Updated: 2023/03/14 19:24:04 by afontain         ###   ########.fr       */
+/*   Updated: 2023/03/17 18:47:27 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	arrange_a(t_list **stack_a)
 {
 	t_list	*tmp;
-	int	i;
+	int		i;
 
 	i = 1;
 	tmp = *stack_a;
 	if (!check_already_sort(*stack_a))
 		return ;
-	while(tmp->content < tmp->next->content)
+	while (tmp->content < tmp->next->content)
 	{
 		i++;
 		tmp = tmp->next;
@@ -29,12 +29,12 @@ void	arrange_a(t_list **stack_a)
 	if (i < ft_lstsize(*stack_a) / 2 + 1)
 	{
 		while (i-- > 0)
-				rotate(stack_a, 'a');
+			rotate(stack_a, 'a');
 	}
-	else if (i >= ft_lstsize(*stack_a) / 2 + 1 )
+	else if (i >= ft_lstsize(*stack_a) / 2 + 1)
 	{
 		while (ft_lstsize(*stack_a) - i++ > 0)
-				rrba(stack_a, 'a');
+			rrba(stack_a, 'a');
 	}
 }
 
@@ -110,7 +110,7 @@ int	main(int ac, char **av)
 		return (write(1, "ERROR\n", 6), 1);
 	if (ac <= 2)
 		return (0);
-	stack_a = create_stacks(ac , av);
+	stack_a = create_stacks(ac, av);
 	if (!check_already_sort(*stack_a))
 		return (ft_free_list(stack_a), 1);
 	stack_b = malloc(sizeof(t_list *));
@@ -119,10 +119,10 @@ int	main(int ac, char **av)
 	*stack_b = NULL;
 	if (ac == 3 || ac == 4)
 		small_sort(stack_a, stack_b);
-	else 
+	else
 		big_sort(stack_a, stack_b);
 	if (!check_already_sort(*stack_a))
-		return (0);
+		return (ft_free_list(stack_b), ft_free_list(stack_a), 0);
 	arrange_a(stack_a);
 	ft_free_list(stack_b);
 	ft_free_list(stack_a);

@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:56:10 by afontain          #+#    #+#             */
-/*   Updated: 2023/03/14 19:44:03 by afontain         ###   ########.fr       */
+/*   Updated: 2023/03/17 13:43:53 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	only3_in_a(t_list **stack_a, t_list **stack_b)
 {
 	int	i;
-	int size;
+	int	size;
 
 	i = 0;
 	size = ft_lstsize(*stack_a);
@@ -28,11 +28,11 @@ void	only3_in_a(t_list **stack_a, t_list **stack_b)
 
 void	only_low_in_a(t_list **stack_a, t_list **stack_b)
 {
-	int *str;
-	int	i;
+	int				*str;
+	int				i;
 	const t_list	*tmp = *stack_a;
-	const int	size = ft_lstsize((t_list *)tmp);
-	
+	const int		size = ft_lstsize((t_list *)tmp);
+
 	i = 0;
 	str = malloc(sizeof(int) * size);
 	if (!str)
@@ -62,7 +62,7 @@ int	mini(int a, int b)
 		return (a);
 }
 
-int	find_index_b(t_list *stack_b, int nombre)
+int	fi_b(t_list *stack_b, int nombre)
 {
 	while (stack_b && stack_b->content != nombre)
 		stack_b = stack_b->next;
@@ -73,26 +73,26 @@ void	same_place(t_list **stack_a, t_list **stack_b, int nombre)
 {
 	int	i;
 	int	j;
-	int k;
+	int	k;
 	int	z;
 	int	q;
-	
+
 	z = ft_lstsize(*stack_a) / 2 + 1;
 	q = ft_lstsize(*stack_b) / 2 + 1;
 	j = ft_lstsize(*stack_a);
 	k = ft_lstsize(*stack_b);
-	if (find_index(*stack_a, nombre) > z && 
-		find_index_b(*stack_b, nombre) > q)
+	if (fi(*stack_a, nombre) > z
+		&& fi_b(*stack_b, nombre) > q)
 	{
-		i = mini(j - find_index(*stack_a, nombre) + 1, k - find_index_b(*stack_b, nombre) + 1);
-		while(i-- > 0)
+		i = mini(j - fi(*stack_a, nombre) + 1, k - fi_b(*stack_b, nombre) + 1);
+		while (i-- > 0)
 			rrr(stack_a, stack_b);
 	}
-	if (find_index(*stack_a, nombre) <= z
-		&& find_index_b(*stack_b, nombre) <= q)
+	if (fi(*stack_a, nombre) <= z
+		&& fi_b(*stack_b, nombre) <= q)
 	{
-		i = mini(find_index(*stack_a, nombre) - 1 , find_index_b(*stack_b, nombre) - 1);
-		while(i-- > 0)
+		i = mini(fi(*stack_a, nombre) - 1, fi_b(*stack_b, nombre) - 1);
+		while (i-- > 0)
 			rr(stack_a, stack_b);
 	}		
 }

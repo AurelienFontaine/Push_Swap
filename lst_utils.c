@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 16:04:35 by afontain          #+#    #+#             */
-/*   Updated: 2023/03/14 16:29:12 by afontain         ###   ########.fr       */
+/*   Updated: 2023/03/17 13:13:47 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_list	*ft_lstlast(t_list *lst)
 
 t_list	*ft_lst_new(int content)
 {
-	t_list *lst_new;
+	t_list	*lst_new;
 
 	lst_new = malloc(sizeof(t_list));
 	if (!lst_new)
@@ -72,6 +72,6 @@ void	ft_free_list(t_list **stack)
 		*stack = (*stack)->next;
 		free(tmp);
 	}
-	*stack= NULL;
+	*stack = NULL;
 	free(stack);
 }

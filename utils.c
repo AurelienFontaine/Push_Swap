@@ -6,13 +6,13 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:24:59 by afontain          #+#    #+#             */
-/*   Updated: 2023/03/17 13:22:26 by afontain         ###   ########.fr       */
+/*   Updated: 2023/03/20 12:45:23 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t	ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	size_t	i;
 

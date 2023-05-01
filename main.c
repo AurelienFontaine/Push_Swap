@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:24:14 by afontain          #+#    #+#             */
-/*   Updated: 2023/03/20 15:05:29 by afontain         ###   ########.fr       */
+/*   Updated: 2023/05/01 14:17:00 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,20 +87,6 @@ int	parsing(int ac, char **av)
 	return (1);
 }
 
-// void	print_stack(t_list *stack)
-// {
-// 	t_list	*tmp;
-
-// 	tmp = stack;
-// 	printf("stack\n");
-// 	while (tmp)
-// 	{
-// 		printf("%d	|	%d\n", tmp->content, tmp->pos_final);
-// 		tmp = tmp->next;
-// 	}
-// 	printf("\n");
-// }
-
 int	main(int ac, char **av)
 {	
 	t_list	**stack_a;
@@ -127,3 +113,17 @@ int	main(int ac, char **av)
 	ft_free_list(stack_b);
 	ft_free_list(stack_a);
 }
+
+// void	print_stack(t_list *stack)
+// {
+// 	t_list	*tmp;
+
+// 	tmp = stack;
+// 	printf("stack\n");
+// 	while (tmp)
+// 	{
+// 		printf("%d	|	%d\n", tmp->content, tmp->pos_final);
+// 		tmp = tmp->next;
+// 	}
+// 	printf("\n");
+// }

@@ -6,21 +6,11 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:07:48 by afontain          #+#    #+#             */
-/*   Updated: 2023/03/20 14:36:07 by afontain         ###   ########.fr       */
+/*   Updated: 2023/05/01 16:30:41 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "get_next_line.h"
 #include "../push_swap.h"
-// int	ft_strcmp(char *s1, char *s2)
-// {
-// 	size_t			i;
-
-// 	i = 0;
-// 	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
-// 		i++;
-// 	return (s1[i] - s2[i]);
-// }
 
 int	compare(char *s1, char *s2)
 {
@@ -122,45 +112,3 @@ char	*get_next_line(int fd)
 	line = line_to_buffer(line);
 	return (line);
 }
-
-// #include <fcntl.h>
-
-//  int main()
-//  {
-//  	char *buffer;
-//  	int fd;
-
-//  	fd = open("gnlTester/files/multiple_line_with_nl", O_RDWR);
-//  	while ((buffer = get_next_line(fd)))
-//  	{
-//  		printf("%s", buffer);
-// 		free(buffer);
-//  	}
-//  }
-
-// int	main()
-// {
-// 	char	*line;
-// 	int	fd;
-
-// 	fd = open("testgnl", O_RDONLY);
-
-// 	line = get_next_line(fd);
-// 	printf("line : %s\n", line);
-// 	free(line);
-// 	line = get_next_line(fd);
-// 	printf("line : %s\n", line);
-// 	free(line);
-// 	line = get_next_line(fd);
-// 	printf("line : %s\n", line);
-// 	free(line);
-// 	line = get_next_line(fd);
-// 	printf("line : %s\n", line);
-// 	free(line);
-// 	line = get_next_line(fd);
-// 	printf("line : %s\n", line);
-// 	line = get_next_line(fd);
-// 	printf("line : %s\n", line);
-// 	free(line);
-// 	return (0);
-// }

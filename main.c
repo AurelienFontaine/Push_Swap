@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:24:14 by afontain          #+#    #+#             */
-/*   Updated: 2023/05/01 14:17:00 by afontain         ###   ########.fr       */
+/*   Updated: 2023/05/02 12:43:04 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	main(int ac, char **av)
 	t_list	**stack_b;
 
 	if (!parsing(ac, av))
-		return (write(STDERR_FILENO, "ERROR\n", 6), 1);
+		return (write(STDERR_FILENO, "Error\n", 6), 1);
 	if (ac <= 2)
 		return (0);
 	stack_a = create_stacks(ac, av);

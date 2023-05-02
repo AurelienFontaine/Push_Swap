@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:01:38 by afontain          #+#    #+#             */
-/*   Updated: 2023/05/01 17:23:57 by afontain         ###   ########.fr       */
+/*   Updated: 2023/05/02 14:20:40 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ int	checker3(char *line, t_list **stack_a, t_list **stack_b)
 {
 	if (compare(line, "rrr\n"))
 	{
-		if ((*stack_a) == NULL || (*stack_b) == NULL)
+		if (ft_lstsize(*stack_a) <= 1 || ft_lstsize(*stack_b) <= 1)
 			return (0);
 		return (rrr(stack_a, stack_b), 0);
 	}
 	else if (compare(line, "rra\n"))
 	{
-		if ((*stack_a) == NULL)
+		if (ft_lstsize(*stack_a) <= 1)
 			return (0);
-		return (rotate(stack_a, 'c'), 0);
+		return (rrba(stack_a, 'c'), 0);
 	}
 	else
-		return (write(STDERR_FILENO, "ERROR\n", 6), 6);
+		return (write(STDERR_FILENO, "Error\n", 6), 6);
 }
 
 int	checker2(char *line, t_list **stack_a, t_list **stack_b)
@@ -94,9 +94,9 @@ int	checker(char *line, t_list **stack_a, t_list **stack_b)
 	}
 	if (compare(line, "rrb\n"))
 	{
-		if ((*stack_b) == 0)
+		if (ft_lstsize(*stack_b) <= 1)
 			return (0);
-		return (rotate(stack_b, 'c'), 0);
+		return (rrba(stack_b, 'c'), 0);
 	}
 	else
 		return (checker1(line, stack_a, stack_b));
@@ -120,12 +120,3 @@ int	verif(t_list **stack_a, t_list **stack_b)
 		write(1, "KO\n", 3);
 	return (0);
 }
-
-	// if (compare(line, "ra\n"))
-	// 	return (rotate(stack_a, 'c'), 0);
-	// else if (compare(line, "rb\n") && *stack_b)
-	// 	return (rotate(stack_b, 'c'), 0);
-	// else if (compare(line, "rra\n"))
-	// 	return (rrba(stack_a, 'c'), 0);
-	// else if (compare(line, "rrb\n") && *stack_b)
-	// 	return (rrba(stack_b, 'c'), 0);

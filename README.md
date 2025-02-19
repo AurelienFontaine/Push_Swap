@@ -11,21 +11,21 @@ Ce projet implémente un jeu de tri basé sur deux piles, `a` et `b`. L'objectif
 
 ### Opérations disponibles
 
-#### Échange
+#### Swap
 - `sa` : Intervertit les deux premiers éléments de la pile `a`.
 - `sb` : Intervertit les deux premiers éléments de la pile `b`.
 - `ss` : Applique `sa` et `sb` simultanément.
 
-#### Déplacement
+#### Push
 - `pa` : Prend le premier élément de `b` et le met sur `a`.
 - `pb` : Prend le premier élément de `a` et le met sur `b`.
 
-#### Rotation
+#### Rotate
 - `ra` : Fait tourner `a` vers le haut (le premier élément devient le dernier).
 - `rb` : Fait tourner `b` vers le haut.
 - `rr` : Applique `ra` et `rb` simultanément.
 
-#### Rotation inverse
+#### Reverse Rotate
 - `rra` : Fait tourner `a` vers le bas (le dernier élément devient le premier).
 - `rrb` : Fait tourner `b` vers le bas.
 - `rrr` : Applique `rra` et `rrb` simultanément.
@@ -35,15 +35,15 @@ Le projet utilise un **algorithme de tri Greedy Sort**. L'idée principale est d
 
 ## Compilation et Exécution
 ### Compilation
-Utilisez `gcc` pour compiler le programme :
+Utilisation du Makefile avec `gcc` pour compiler le programme :
 ```sh
-gcc -o tri_piles tri_piles.c
+make
 ```
 
 ### Exécution
 Lancez le programme :
 ```sh
-./tri_piles
+./push_swap <NB1> <NB2> ... <NBn>
 ```
 
 ## Exemples d'Utilisation
@@ -88,8 +88,41 @@ pa
 Pile a : [-3, -1, 2, 7, 8]
 Pile b : []
 ```
+##Partie Bonus
+Lancer le programme :
+
+```sh
+./checker <NB1> <NB2> ... <NBn>
+```
+
+Il doit ensuite attendre et lire des instructions sur l’entrée standard, chaque ins-
+truction suivie par un ’\n’. Une fois toutes les instructions lues, le programme va
+les exécuter sur la pile d’entiers passée en paramètre.
+
+Si à la suite de l’exécution la pile a est bien triée et la pile b est vide, alors le
+programme doit afficher "OK" suivi par un ’\n’ sur la sortie standard.
+
+Sinon, il doit afficher "KO" suivi par un ’\n’ sur la sortie standard
 
 
+##Exemple 
+```sh
+$>./checker 3 2 1 0
+rra
+pb
+sa
+rra
+pa
+OK
+$>./checker 3 2 1 0
+sa
+rra
+pb
+KO
+$>./checker 3 2 one 0
+Error
+$>
+```
 ## Auteur
 Projet développé par **[Aurelien Fontaine]**.
 

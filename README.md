@@ -43,7 +43,7 @@ make
 ### Exécution
 Lancez le programme :
 ```sh
-./push_swap <NB1> <NB2> ... <NBn>
+./push_swap NB1 NB2 ... NBn
 ```
 
 ## Exemples d'Utilisation
@@ -57,9 +57,13 @@ Pile b : []
 ```sh
 pb
 pb
-sa
+ra
+ra
 pa
+ra
 pa
+rra
+rra
 ```
 #### Résultat :
 ```sh
@@ -77,11 +81,11 @@ Pile b : []
 ```sh
 pb
 pb
+sa
+rra
+pa
+pa
 ra
-pb
-pa
-pa
-pa
 ```
 #### Résultat :
 ```sh
@@ -92,7 +96,7 @@ Pile b : []
 Lancer le programme :
 
 ```sh
-./checker <NB1> <NB2> ... <NBn>
+./checker NB1 NB2 ... NBn
 ```
 
 Il doit ensuite attendre et lire des instructions sur l’entrée standard, chaque ins-
